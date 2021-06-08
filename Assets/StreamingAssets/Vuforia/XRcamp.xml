@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="0002" size="0.250000 0.353487" />
-    <ImageTarget name="0001" size="0.250000 0.353487" />
+    <ImageTarget name="wall" size="0.300000 0.203625" />
+    <ImageTarget name="phone" size="0.100000 0.109131" />
+    <ImageTarget name="elevetor" size="0.200000 0.205859" />
+    <ImageTarget name="doorknob" size="0.200000 0.171586" />
   </Tracking>
 </QCARConfig>
