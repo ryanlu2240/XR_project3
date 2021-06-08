@@ -8,15 +8,16 @@ using UnityEngine.Events;
 namespace XR.Break
 {
     /// <summary>
-    /// This class manages the state for the game orb entity and orchestrates the manipulation of related references 
+    /// This class manages the state for the game orb entity and orchestrates the manipulation of related references
     /// in response to state and input changes.
     /// </summary>
     public class OrbManager : MonoBehaviour, IMixedRealityInputHandler
     {
         [Header("References")]
 
-        // [SerializeField]
-        // private Animator animator;
+        [SerializeField]
+        private Animator animator;
+        public ParticleSystem animator2;
 
         [SerializeField]
         private Rigidbody rigidBody;
@@ -78,7 +79,7 @@ namespace XR.Break
         private float PowerUpForce => Mathf.Clamp(powerUpTimer, 0.0f, PowerUpMax) * PowerUpForceMultiplier;
         private float PowerUp01 => Mathf.Clamp01(powerUpTimer / PowerUpMax);
 
-        private Vector3 TrackedPointerDirection => 
+        private Vector3 TrackedPointerDirection =>
             trackedLinePointer != null ? trackedLinePointer.Rotation * Vector3.forward : Vector3.zero;
 
         private OrbState state = OrbState.Idle;
@@ -92,7 +93,7 @@ namespace XR.Break
 
         private void Awake()
         {
-            // Debug.Assert(animator != null);
+            Debug.Assert(animator != null);
             Debug.Assert(rigidBody != null);
             Debug.Assert(solverHandler != null);
             Debug.Assert(mesh != null);
@@ -106,8 +107,8 @@ namespace XR.Break
         {
             powerUpTimer = 0.0f;
 
-            // animator.SetBool("PowerUp", poweringUp);
-            // animator.SetFloat("PowerUpSpeed", 1.0f / PowerUpMax);
+            animator.SetBool("PowerUp", poweringUp);
+            animator.SetFloat("PowerUpSpeed", 1.0f / PowerUpMax);
 
             parabolicLineData.gameObject.SetActive(poweringUp);
         }
@@ -180,6 +181,7 @@ namespace XR.Break
         {
             if (trackedLinePointer != null)
             {
+                Debug.Log("Fire");
                 var forceVec = TrackedPointerDirection * PowerUpForce;
 
                 CurrentState = OrbState.PhysicsTracked;
@@ -187,6 +189,7 @@ namespace XR.Break
                 rigidBody.AddForce(forceVec, ForceMode.Impulse);
 
                 OnFire?.Invoke();
+                animator2.Play();
             }
         }
 
