@@ -17,7 +17,9 @@ namespace XR.Break
 
         [SerializeField]
         private Animator animator;
-        public ParticleSystem animator2;
+        public ParticleSystem gas;
+        public GameObject barCtrl=null;
+        public GameObject can;
 
         [SerializeField]
         private Rigidbody rigidBody;
@@ -27,6 +29,9 @@ namespace XR.Break
 
         [SerializeField]
         private SolverHandler solverHandler;
+
+    	public float sprayRange = 5f;
+
 
         [Header("Power Up")]
         [SerializeField]
@@ -144,6 +149,7 @@ namespace XR.Break
                 wasTracked = isTracked;
             }
 
+            can.active = isTracked;
             if (isTracked)
             {
                 // If we are now tracking a controller and we were idle, then switch to source tracking state
@@ -182,14 +188,37 @@ namespace XR.Break
             if (trackedLinePointer != null)
             {
                 Debug.Log("Fire");
-                var forceVec = TrackedPointerDirection * PowerUpForce;
-
-                CurrentState = OrbState.PhysicsTracked;
-
-                rigidBody.AddForce(forceVec, ForceMode.Impulse);
+                // var forceVec = TrackedPointerDirection * PowerUpForce;
+                //
+                // CurrentState = OrbState.PhysicsTracked;
+                //
+                // rigidBody.AddForce(forceVec, ForceMode.Impulse);
 
                 OnFire?.Invoke();
-                animator2.Play();
+                gas.Play();
+                if (barCtrl != null)
+                {
+                    barCtrl.GetComponent<bar>().DecreaseCleaner();
+                }
+
+                GameObject[] virus = GameObject.FindGameObjectsWithTag("Virus");
+                float shortestDistance = Mathf.Infinity;
+                GameObject nearestVirus = null;
+                foreach (GameObject v in virus)
+                {
+                    float distanceToVirus = Vector3.Distance(transform.position, v.transform.position);
+                    if (distanceToVirus < shortestDistance)
+                    {
+                        shortestDistance = distanceToVirus;
+                        nearestVirus = v;
+                    }
+                }
+
+                Debug.Log(shortestDistance);
+                if (nearestVirus != null && shortestDistance <= sprayRange)
+        		{
+        			Destroy(nearestVirus);
+        		}
             }
         }
 
@@ -200,30 +229,38 @@ namespace XR.Break
             if (IsTrackingSource(eventData.SourceId)
                 && eventData.MixedRealityInputAction.Description == "Select")
             {
-                if (CurrentState == OrbState.SourceTracked)
+
+                if(barCtrl.GetComponent<bar>().currentCleaner > 0)
                 {
                     Fire();
-                }
-                else
-                {
                     CurrentState = OrbState.SourceTracked;
                     OnRetrieve?.Invoke();
                 }
+
+                // if (CurrentState == OrbState.SourceTracked)
+                // {
+                //     Fire();
+                // }
+                // else
+                // {
+                //     CurrentState = OrbState.SourceTracked;
+                //     OnRetrieve?.Invoke();
+                // }
             }
         }
 
         public void OnInputDown(InputEventData eventData)
         {
-            if (IsTrackingSource(eventData.SourceId)
-                && eventData.MixedRealityInputAction.Description == "Select")
-            {
-                if (CurrentState == OrbState.SourceTracked)
-                {
-                    IsPoweringUp = true;
-                    powerUpTimer = 0.0f;
-                }
-                // if sourceTracked state, then power up
-            }
+            // if (IsTrackingSource(eventData.SourceId)
+            //     && eventData.MixedRealityInputAction.Description == "Select")
+            // {
+            //     if (CurrentState == OrbState.SourceTracked)
+            //     {
+            //         IsPoweringUp = true;
+            //         powerUpTimer = 0.0f;
+            //     }
+            //     // if sourceTracked state, then power up
+            // }
         }
 
         #endregion
