@@ -23,8 +23,23 @@ namespace XR.Break
                 // We started on one side of the sphere collider but passed through the ring to the other side on exit
                 if (positiveSideStart != positiveSideEnd)
                 {
-                    ScoreManager.Instance.AddScore(2 * DEFAULT_SCORE);
-                    OnCapture?.Invoke();
+                    if (isAnswer) {
+                        ScoreManager.Instance.AddScore(2 * DEFAULT_SCORE);
+                        OnCapture?.Invoke();
+                        Box.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                    } else {
+                        OnCapture?.Invoke();
+                        Box.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+                    }
+                    
+                    // if (isAnswer!=null)
+                    // {
+                    //     this.transform.parent.gameObject.SetActive(false);
+                    // }
+                    // else
+                    // {
+                    //     Debug.Log("NULL ANS");
+                    // }
                     Release();
                 }
             }
