@@ -5,13 +5,13 @@ using UnityEngine;
 public class CalDis : MonoBehaviour
 {
 
-    private WaitForSeconds shotDuration = new WaitForSeconds(5.0f);
+    // private WaitForSeconds shotDuration = new WaitForSeconds(5.0f);
 
 	public GameObject positiontag;
     public GameObject tar;
 	public GameObject UI;
     bool show=false;
-    float t=0.0f;
+    // float t=0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,21 +34,21 @@ public class CalDis : MonoBehaviour
         }
     }
 
-    private IEnumerator ShotEffect()
-    {
-        // 播放音效
-        //unAudio.Play ();
+    // private IEnumerator ShotEffect()
+    // {
+    //     // 播放音效
+    //     //unAudio.Play ();
 
-        // 显示射击轨迹
-        show=true;
-        Debug.Log("active");
-        UI.SetActive(true);
+    //     // 显示射击轨迹
+    //     show=true;
+    //     Debug.Log("active");
+    //     UI.SetActive(true);
 
-        yield return shotDuration;
+    //     yield return shotDuration;
 
-        // 等待结束后隐藏轨迹
-        show=false;
-        Debug.Log("disactive");
-        UI.SetActive(false);
-    }
+    //     // 等待结束后隐藏轨迹
+    //     show=false;
+    //     Debug.Log("disactive");
+    //     UI.SetActive(false);
+    // }
 }
