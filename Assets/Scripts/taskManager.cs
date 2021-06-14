@@ -18,7 +18,7 @@ public class taskManager : MonoBehaviour
     void Awake()
     {
         BGM.Play();
-        Invoke("Play", 1);
+        Invoke("Play", 10);
     }
     // Start is called before the first frame update
     void Start()
