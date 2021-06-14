@@ -5,6 +5,8 @@ namespace XR.Break
     public class RingTarget : Target
     {
         private bool positiveSideStart;
+        bool isAnswer;
+        GameObject Box;
 
         private void OnTriggerEnter(Collider other)
         {
