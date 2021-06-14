@@ -13,6 +13,8 @@ namespace XR.Break
 
         [SerializeField]
         private DefaultObjectPoolItem PoolItem;
+        public GameObject Box;
+        public bool isAnswer;
 
         [SerializeField]
         private Animator SpinAnimator;
@@ -64,8 +66,12 @@ namespace XR.Break
         {
             active = true;
             timer = 0.0f;
+            // if (Box != null)
+            // {
+            //     Box.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            // }
 
-            PlayAnimation();
+            // PlayAnimation();
             OnSpawn?.Invoke();
         }
 
@@ -97,10 +103,10 @@ namespace XR.Break
             if (active && AutoDestruct)
             {
                 timer += Time.deltaTime;
-                if (timer > Lifetime)
-                {
-                    Release();
-                }
+                // if (timer > Lifetime)
+                // {
+                //     Release();
+                // }
             }
         }
 
@@ -117,7 +123,7 @@ namespace XR.Break
         protected virtual void Release()
         {
             active = false;
-            PlayAnimation(true);
+            // PlayAnimation(true);
             OnRelease?.Invoke();
         }
 
