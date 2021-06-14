@@ -18,7 +18,7 @@ MonoBehaviour:
     Name: 0-scencemanager
     Path: Assets/Scenes/0-scencemanager.unity
     Included: 1
-    BuildIndex: 0
+    BuildIndex: -1
     Tag: Untagged
     Asset: {fileID: 102900000, guid: e23b108f68d2f4e46b1485dffd9ac67b, type: 3}
   useLightingScene: 0

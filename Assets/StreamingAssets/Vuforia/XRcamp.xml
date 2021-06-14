@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="cloth_large" size="0.300000 0.367917" />
+    <ImageTarget name="cloth_medium" size="0.200000 0.245278" />
+    <ImageTarget name="cloth_small" size="0.100000 0.122639" />
     <ImageTarget name="gura2" size="0.250000 0.226042" />
     <ImageTarget name="calli" size="0.250000 0.353125" />
     <ImageTarget name="wall" size="0.300000 0.203625" />
