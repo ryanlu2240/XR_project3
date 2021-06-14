@@ -5,8 +5,6 @@ namespace XR.Break
     public class RingTarget : Target
     {
         private bool positiveSideStart;
-        bool isAnswer;
-        GameObject Box;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -33,7 +31,7 @@ namespace XR.Break
                         OnCapture?.Invoke();
                         Box.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                     }
-                    
+
                     // if (isAnswer!=null)
                     // {
                     //     this.transform.parent.gameObject.SetActive(false);
