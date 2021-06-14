@@ -3765,6 +3765,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1529418371697356504, guid: 194e3e043a2a6461ca987b1891474e32,
+        type: 3}
+      propertyPath: trackedHandness
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5100539688238422344, guid: 194e3e043a2a6461ca987b1891474e32,
         type: 3}
       propertyPath: m_Name
