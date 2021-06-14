@@ -26,21 +26,21 @@ MonoBehaviour:
   lightingScenes:
   - Name: DefaultLightingScene
     Path: Assets/MRTK/Services/SceneSystem/SceneSystemResources/DefaultLightingScene.unity
-    Included: 1
-    BuildIndex: 7
+    Included: 0
+    BuildIndex: -1
     Tag: Untagged
     Asset: {fileID: 102900000, guid: 7e54e36c44f826c438c95da79f8de638, type: 3}
   contentScenes:
   - Name: 1-PlayVideo
     Path: Assets/Scenes/1-PlayVideo.unity
     Included: 1
-    BuildIndex: 8
+    BuildIndex: 0
     Tag: Untagged
     Asset: {fileID: 102900000, guid: c5ad8005b91f64b7eae5ac4442325d89, type: 3}
   - Name: 2-tracking
     Path: Assets/Scenes/2-tracking.unity
     Included: 1
-    BuildIndex: 9
+    BuildIndex: 1
     Tag: Untagged
     Asset: {fileID: 102900000, guid: be2a9816c518342d9913eba53934069e, type: 3}
   permittedLightingSceneComponentTypes:
