@@ -11,6 +11,7 @@ public class ShowCube : MonoBehaviour
 
 	[SerializeField]
 	private MeshRenderer mesh;
+    public static int show;
 
 	[SerializeField]
 	private SolverHandler solverHandler;
@@ -41,7 +42,7 @@ public class ShowCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        show=0;
     }
 
     // Update is called once per frame
@@ -83,8 +84,12 @@ public class ShowCube : MonoBehaviour
     private void OrbStateUpdate()
     {
     	solverHandler.UpdateSolvers = CurrentState != OrbState.PhysicsTracked;
-
-        mesh.enabled = CurrentState != OrbState.Idle;
+        if(show==1){
+            mesh.enabled = CurrentState != OrbState.Idle;
+        }
+        else{
+            mesh.enabled = false;
+        }
     }
 
 }
