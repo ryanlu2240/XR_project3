@@ -23,7 +23,7 @@ public class CalDis : MonoBehaviour
     {
         if(!show){
             float dist = Vector3.Distance(tar.transform.position, positiontag.transform.position);
-            Debug.Log(dist);
+            // Debug.Log(dist);
             if(dist <= 1.0f ){
                 UI.SetActive(true);
                 // StartCoroutine (ShotEffect());
