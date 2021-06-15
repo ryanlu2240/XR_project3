@@ -24,7 +24,7 @@ public class ColliderShow : MonoBehaviour
             Debug.Log(t);
             Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
-    	if(other.gameObject.name=="ImageTarget_phone" && t==null){
+    	if(other.gameObject.name=="Cube" && t==null){
             Debug.Log(t);
     		Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     	}
