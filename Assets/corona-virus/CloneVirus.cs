@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColliderShow : MonoBehaviour
+public class CloneVirus : MonoBehaviour
 {
     public GameObject myPrefab;
     // Start is called before the first frame update
@@ -19,11 +19,10 @@ public class ColliderShow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject t = GameObject.Find("OnHandVirus(Clone)");
-        
-    	if(other.gameObject.name=="ImageTarget_phone" && t==null){
-            Debug.Log(t);
-    		Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject t;
+        t = GameObject.Find("clonevirus(Clone)");
+    	if(other.gameObject.name=="Box" && t==null){
+    		Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity);
     	}
         
     }

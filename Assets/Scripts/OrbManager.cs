@@ -220,7 +220,7 @@ namespace XR.Break
         			Destroy(nearestVirus);
         		}
 
-                GameObject handvirus = GameObject.Find("OnHandVirus");
+                GameObject handvirus = GameObject.Find("OnHandVirus(Clone)");
                 if (handvirus != null)
                 {
                     float disV = Vector3.Distance(transform.position, handvirus.transform.position);

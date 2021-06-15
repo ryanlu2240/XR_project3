@@ -11,7 +11,7 @@ public class ShowCube : MonoBehaviour
 
 	[SerializeField]
 	private MeshRenderer mesh;
-    public static int show;
+    public int show;
 
 	[SerializeField]
 	private SolverHandler solverHandler;
