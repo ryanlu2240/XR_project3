@@ -219,6 +219,17 @@ namespace XR.Break
         		{
         			Destroy(nearestVirus);
         		}
+
+                GameObject handvirus = GameObject.Find("OnHandVirus");
+                if (handvirus != null)
+                {
+                    float disV = Vector3.Distance(transform.position, handvirus.transform.position);
+                    Debug.Log("D" +disV.ToString());
+                    if (disV < 0.2)
+                    {
+                        Destroy(handvirus);
+                    }
+                }
             }
         }
 
